@@ -3,6 +3,8 @@ Pipeline  allow creation of sparse matrix from genome folder, allowing for new s
 
 # Requirement
 
-Python = > 3.9 \n
+Python = > 3.9 
+
 MMseqs2 
+
 MMseqs2 indexed protein database such as (UniRef90)
