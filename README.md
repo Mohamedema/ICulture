@@ -1,5 +1,5 @@
 # ICulture pipeline
-The pipeline  allows the creation of a sparse matrix from the algae proteome database fasta files, allowing for new species to be eventually introduced into the output table matrix
+The ICulture pipeline creates a sparse matrix from algae proteome database FASTA files, enabling the eventual addition of new species to the output table matrix.
 
 # Requirement
 
@@ -9,22 +9,28 @@ Python > 3.8
 
 Python Pandas 
 
-Algea Speices protein database
+Algae Species Protein Database
 
-The first step is to create representative protein seq using 90 and 95 identity and coverage
+The first step is to generate representative protein sequences using 90% and 95% identity and coverage thresholds.
 
 # Usage: 
-Iculture_WP3.sh <database_fasta_file> <new species protein_fasta_file> 
+
+# The first step is to perform MMSEQ easy cluster using 90 and 95
+Iculture_WP3.sh <database_fasta_file> <"new species protein_fasta_file> 
 
 # The second step is to perform pfam annotation
 
-Using annotate_pfam.sh request three argument 
+Use annotate_pfam.sh, which requires three arguments:
 
-Representitive sequence FASTA_FILE, PFAM_HMM_DB, the path for the OUTPUT_FILE
+Representative Sequence FASTA File
+Pfam HMM Database File
+Output File Path
 
 # The third step is to create the table using utilities_make_table.py
 
-Please, change the name of the input file for this script to match first_step_output_name_mmseq_table
+Run utilities_make_table.py to generate the final table. Ensure that the input file name for this script matches the output name of the MMseqs2 table from the first step.
+
+Note: Rename the input file to match first_step_output_name_mmseq_table.
 
 
 
