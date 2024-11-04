@@ -21,8 +21,8 @@ tmp_dir="tmp"
 output_file="rep_seq_counts.tsv"
 
 # Define identity and coverage thresholds as arrays
-identities=(90 95)
-coverages=(90 95)
+identities=(90 50)
+coverages=(90 50)
 
 # Write the header for the output table
 echo -e "Identity\tCoverage\tRepresentative_Count" > "$output_file"
