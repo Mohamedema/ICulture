@@ -1,11 +1,9 @@
 # Load necessary libraries
 library(ggplot2)
-library(viridis)  # for a fancy color scale
+library(viridis)  
 
 # Read in the data
-rep_seq_data <- read.table("/home/labpc6c/Documents/Toby_and_me_data/red_phoexplorer/rep_seq_counts.tsv", header = TRUE, sep = "\t")
-
-rep_seq_data <- read.table("/home/labpc6c/Documents/Toby_and_me_data/Phaeoexplorer_mmseq2/brown_rep_seq_counts.tsv", header = TRUE, sep = "\t")
+rep_seq_data <- read.table("brown_rep_seq_counts.tsv", header = TRUE, sep = "\t")
 
 # Convert Identity and Coverage columns to factors to maintain ordering in the plot
 rep_seq_data$Identity <- as.factor(rep_seq_data$Identity)
