@@ -18,7 +18,8 @@ The first step is to generate representative protein sequences using 90% and 95%
 # The first step is to perform MMSEQ easy cluster using 90 and 50
 Iculture_WP3.sh <database_fasta_file> <protein_fasta_file> <species_name>"
 Example: ./Iculture_WP3.sh database_fasta_file.fa Gracilaria-vermiculophylla.fa Gracilaria-vermiculophylla
-Note: These fasta files present in the dataset directory
+
+Note: These fasta files are present in the dataset directory
 
 
 # The second step is to perform pfam annotation
