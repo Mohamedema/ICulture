@@ -28,9 +28,8 @@ Output File Path
 
 # The third step is to create the table using utilities_make_table.py
 
-Run utilities_make_table.py to generate the final table. Ensure that the input file name for this script matches the output name of the MMseqs2 table from the first step.
-
-Note: Rename the input file to match first_step_output_name_mmseq_table.
+Run presence_absence_matrix.py to generate the final table. Ensure that the input file name for this script matches the output name of the MMseqs2 table from the first step.
+example: python presence_absence_matrix.py ./linclust_80c_80i_cluster.tsv
 
 
 
