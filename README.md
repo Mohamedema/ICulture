@@ -21,8 +21,15 @@ Example: ./Iculture_WP3.sh database_fasta_file.fa Gracilaria-vermiculophylla.fa 
 
 Note: These fasta files are present in the dataset directory
 
+# The second step is to create the table using utilities_make_table.py
 
-# The second step is to perform pfam annotation
+Run presence_absence_matrix.py to generate the final table. Ensure that the input file name for this script matches the output name of the MMseqs2 table from the first step.
+
+
+example: python presence_absence_matrix.py ./linclust_80c_80i_cluster.tsv
+
+
+# The third step is to perform pfam annotation
 
 Use annotate_pfam.sh, which requires three arguments:
 
@@ -30,10 +37,7 @@ Representative Sequence FASTA File
 Pfam HMM Database File
 Output File Path
 
-# The third step is to create the table using utilities_make_table.py
 
-Run presence_absence_matrix.py to generate the final table. Ensure that the input file name for this script matches the output name of the MMseqs2 table from the first step.
-example: python presence_absence_matrix.py ./linclust_80c_80i_cluster.tsv
 
 
 
