@@ -1,18 +1,25 @@
 #!/bin/bash
 
 # Check if the correct number of arguments is provided
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <database_fasta_file> <protein_fasta_file>"
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 <database_fasta_file> <protein_fasta_file> <species_name>"
     exit 1
 fi
 
 # Input arguments
 database_fasta="$1"
 protein_fasta="$2"
+species_name="$3"
+
+# Modified protein FASTA file with species name in headers
+modified_protein_fasta="modified_${protein_fasta}"
+
+# Add species name to the headers in the protein FASTA file
+awk -v species="$species_name" '/^>/ {print ">" species "$" substr($0, 2); next} {print}' "$protein_fasta" > "$modified_protein_fasta"
 
 # Concatenated file
-input_fasta="concatonated_protein.fasta"
-cat "$database_fasta" "$protein_fasta" > "$input_fasta"
+input_fasta="concatenated_protein.fasta"
+cat "$database_fasta" "$modified_protein_fasta" > "$input_fasta"
 
 # Temporary directory for MMseqs
 tmp_dir="tmp"
@@ -54,8 +61,7 @@ for id in "${identities[@]}"; do
     done
 done
 
-# Clean up temporary directory
-rm -rf "$tmp_dir"
+# Clean up temporary directory and modified protein FASTA file
+rm -rf "$tmp_dir" "$modified_protein_fasta"
 
 echo "Table with representative sequence counts has been saved to $output_file."
-
