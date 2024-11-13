@@ -16,7 +16,7 @@ The first step is to generate representative protein sequences using 90% and 95%
 # Usage: 
 
 # The first step is to perform MMSEQ easy cluster using 90 and 50
-Iculture_WP3.sh <database_fasta_file> <"new species protein_fasta_file> 
+Iculture_WP3.sh <database_fasta_file> <protein_fasta_file> <species_name>"
 
 # The second step is to perform pfam annotation
 
