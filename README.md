@@ -92,7 +92,7 @@ Follow these steps to run the pipeline:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/<your-username>/ICulture.git
+git clone https://github.com/Mohamedema/ICulture.git
 cd ICulture
 ```
 ### 2. Download the Dataset
