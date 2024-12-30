@@ -110,7 +110,7 @@ docker pull mahmoudbassyouni/iculture-hmmscan-python:v1
 ```
 2.Pull the MMseqs2 image from Docker Hub:
 ```bash
-docker pull soedinglab/mmseqs
+docker pull soedinglab/mmseqs2
 ```
 4. Generate Required Input Files
 - Generate samplesheet.csv:
