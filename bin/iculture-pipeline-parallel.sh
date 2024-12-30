@@ -103,7 +103,7 @@ for cluster_file in $cluster_files; do
     docker run --rm \
         -v "$(pwd):/workspace" \
         -w /workspace \
-        iculture-hmmscan-python:latest \
+        mahmoudbassyouni/iculture-hmmscan-python:v1 \
         bash -c "python /workspace/bin/presence_absence_matrix.py $cluster_file"
 
     if [ $? -ne 0 ]; then
@@ -122,7 +122,7 @@ echo "Splitting the concatenated FASTA file into $hmmer_threads parts..."
 docker run --rm \
     -v "$(pwd):/workspace" \
     -w /workspace \
-    iculture-hmmscan-python:latest \
+    mahmoudbassyouni/iculture-hmmscan-python:v1 \
     bash -c "seqkit split -p $hmmer_threads -O $split_dir $concat_fasta"
 
 if [ $? -ne 0 ]; then
@@ -138,7 +138,7 @@ echo "Running HMMER annotation in parallel using GNU parallel..."
 docker run --rm \
     -v "$(pwd):/workspace" \
     -w /workspace \
-    iculture-hmmscan-python:latest \
+    mahmoudbassyouni/iculture-hmmscan-python:v1 \
     bash -c "parallel --tmpdir $parallel_dir --jobs $hmmer_threads 'hmmscan --tblout $parallel_dir/results_{/.}.tbl $pfam_hmm_db {}' ::: ${split_dir}/*.fasta"
 
 if [ $? -ne 0 ]; then
@@ -153,7 +153,7 @@ echo "Combining results into a single file: $output_combined..."
 docker run --rm \
     -v "$(pwd):/workspace" \
     -w /workspace \
-    iculture-hmmscan-python:latest \
+    mahmoudbassyouni/iculture-hmmscan-python:v1 \
     bash -c "
     head -n -10 ${parallel_dir}/results_concatenated_protein.part_001.tbl > $output_combined
     for i in \$(seq -f '%03g' 2 $hmmer_threads); do
@@ -176,7 +176,7 @@ echo "Running Stats Visualization Python Script..."
 docker run --rm \
     -v "$(pwd):/workspace" \
     -w /workspace \
-    iculture-hmmscan-python:latest \
+    mahmoudbassyouni/iculture-hmmscan-python:v1 \
     bash -c "python /workspace/bin/stats-visualisation.py --input $output_combined  --output $visualization_output_dir"
 
 if [ $? -ne 0 ]; then
