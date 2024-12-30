@@ -58,13 +58,13 @@ docker pull mahmoudbassyouni/iculture-hmmscan-python:v1
 The main dataset for the pipeline is the **Brown Algae dataset**, sourced from the [Phaeoexplorer Project](https://phycoweb.net/). Due to size constraints, the dataset is hosted externally and can be downloaded from **Zenodo**:
 
 - **Dataset Download Link:**  
-  [Brown-Algae Dataset](https://zenodo.org/records/14364746/files/Brown-Algae.dataset.tar.gz?download=1)
+  [Brown-Algae Dataset](https://zenodo.org/records/14578162/files/Brown-Algae.dataset.tar.gz?download=1)
 
 ### Instructions for Downloading and Extracting
 To include the dataset in your workflow, download and extract it into a `dataset/` folder within the root directory of the cloned repository:
 
 ```bash
-wget -O Brown-Algae.dataset.tar.gz https://zenodo.org/records/14364746/files/Brown-Algae.dataset.tar.gz?download=1
+wget -O Brown-Algae.dataset.tar.gz https://zenodo.org/records/14578162/files/Brown-Algae.dataset.tar.gz?download=1
 mkdir dataset
 tar -xzvf Brown-Algae.dataset.tar.gz -C dataset/
 ```
@@ -97,11 +97,12 @@ cd ICulture
 ```
 ### 2. Download the Dataset
 The dataset is hosted on Zenodo and can be downloaded using the link below:
-  [Download Brown Algae Dataset](https://zenodo.org/records/14364746/files/Brown-Algae.dataset.tar.gz?download=1)
+  [Download Brown Algae Dataset](https://zenodo.org/records/14578162/files/Brown-Algae.dataset.tar.gz?download=1)
 
 Extract the dataset into your working directory:
 ```bash
-tar -xvzf Brown-Algae.dataset.tar.gz
+mkdir dataset
+tar -xvzf Brown-Algae.dataset.tar.gz -C dataset
 ```
 ### 3. Pull Required Docker Images
 1.Pull the iCulture HMMER + Python image:
