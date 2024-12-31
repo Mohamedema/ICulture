@@ -47,15 +47,16 @@ Species_Genes = pd.DataFrame({'Species': df['Species_Query_Name'], 'Gene': df['T
 GroubByGene = Species_Genes.groupby('Gene').size().sort_values(ascending=False)
 gene_counts = Species_Genes.groupby('Species')['Gene'].count()
 
-###### Figure 1 : Top-50-Genes-Count
+###### Figure 1 : Top-20-Genes-Count
 
 plt.figure(figsize=(10, 6), dpi=400)
-ax = GroubByGene.head(50).plot(kind='bar', color='#1f77b4', edgecolor='black')
+ax = GroubByGene.head(20).plot(kind='bar', color='#1f77b4', edgecolor='black')
 
-plt.title('Top 50 Genes Count', fontsize=16, fontweight='bold')
+plt.title('Top 20 Genes Count', fontsize=16, fontweight='bold')
 plt.xlabel('Genes', fontsize=14, fontweight='bold')
 plt.ylabel('Genes Count', fontsize=14, fontweight='bold')
 plt.xticks(rotation=45, ha='right')
+plt.grid(axis='x', linestyle='--', alpha=0.7)
 
 # Add vertical numbers inside bars with styling
 for p in ax.patches:
@@ -65,22 +66,22 @@ for p in ax.patches:
                 rotation=90,  # Rotated for vertical orientation
                 bbox=dict(facecolor='black', alpha=0.7, edgecolor='none'))
 
-plt.grid(axis='y', linestyle='--', alpha=0.5)
 plt.tight_layout()
-top_50_genes_path = os.path.join(output_dir, 'Top_50_genes_count.png')
-plt.savefig(top_50_genes_path)
-print(f"Figure saved: '{top_50_genes_path}'")
+top_20_genes_path = os.path.join(output_dir, 'Top_20_genes_count.png')
+plt.savefig(top_20_genes_path)
+print(f"Figure saved: '{top_20_genes_path}'")
 plt.show()
 
 ###### Figure 2 : Genes-Count-by-Species
 
-plt.figure(figsize=(10, 6), dpi=400)
+plt.figure(figsize=(20, 14), dpi=300)
 ax = gene_counts.plot(kind='bar', color='#ff7f0e', edgecolor='black')
 
 plt.title('Genes Count by Species', fontsize=16, fontweight='bold')
 plt.xlabel('Species', fontsize=14, fontweight='bold')
 plt.ylabel('Number of Genes', fontsize=14, fontweight='bold')
 plt.xticks(rotation=45, ha='right')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
 
 # Add vertical numbers inside bars with styling
 for p in ax.patches:
@@ -90,7 +91,6 @@ for p in ax.patches:
                 rotation=90,  # Rotated for vertical orientation
                 bbox=dict(facecolor='black', alpha=0.7, edgecolor='none'))
 
-plt.grid(axis='y', linestyle='--', alpha=0.5)
 plt.tight_layout()
 gene_counts_by_species_path = os.path.join(output_dir, 'Genes_count_by_species.png')
 plt.savefig(gene_counts_by_species_path)
