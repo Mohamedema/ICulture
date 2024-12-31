@@ -50,18 +50,21 @@ gene_counts = Species_Genes.groupby('Species')['Gene'].count()
 ##### Figure 1 : Top-50-Genes-Count
 
 plt.figure(figsize=(10, 6), dpi=400)
-ax = GroubByGene.head(50).plot(kind='bar', color='skyblue', edgecolor='black')
+ax = GroubByGene.head(50).plot(kind='bar', color='#1f77b4', edgecolor='black')
 
-plt.title('Top 50 Genes Count', fontsize=16)
-plt.xlabel('Genes', fontsize=14)
-plt.ylabel('Genes Count', fontsize=14)
+plt.title('Top 50 Genes Count', fontsize=16, fontweight='bold')
+plt.xlabel('Genes', fontsize=14, fontweight='bold')
+plt.ylabel('Genes Count', fontsize=14, fontweight='bold')
 plt.xticks(rotation=45, ha='right')
 
-# Add numbers inside bars
+# Add vertical numbers inside bars with styling
 for p in ax.patches:
-    ax.annotate(f"{int(p.get_height())}", (p.get_x() + p.get_width() / 2., p.get_height() / 2),
-                ha='center', va='center', fontsize=10, color='black')
+    ax.annotate(f"{int(p.get_height())}",
+                (p.get_x() + p.get_width() / 2., p.get_height() / 2),
+                ha='center', va='center', fontsize=10, color='white', fontweight='bold', 
+                bbox=dict(facecolor='black', alpha=0.7, edgecolor='none'))
 
+plt.grid(axis='y', linestyle='--', alpha=0.5)
 plt.tight_layout()
 top_50_genes_path = os.path.join(output_dir, 'Top_50_genes_count.png')
 plt.savefig(top_50_genes_path)
@@ -71,18 +74,21 @@ plt.show()
 ##### Figure 2 : Genes-Count-by-Species
 
 plt.figure(figsize=(10, 6), dpi=400)
-ax = gene_counts.plot(kind='bar', color='skyblue', edgecolor='black')
+ax = gene_counts.plot(kind='bar', color='#ff7f0e', edgecolor='black')
 
-plt.title('Genes Count by Species', fontsize=16)
-plt.xlabel('Species', fontsize=14)
-plt.ylabel('Number of Genes', fontsize=14)
+plt.title('Genes Count by Species', fontsize=16, fontweight='bold')
+plt.xlabel('Species', fontsize=14, fontweight='bold')
+plt.ylabel('Number of Genes', fontsize=14, fontweight='bold')
 plt.xticks(rotation=45, ha='right')
 
-# Add numbers above bars
+# Add vertical numbers inside bars with styling
 for p in ax.patches:
-    ax.annotate(f"{int(p.get_height())}", (p.get_x() + p.get_width() / 2., p.get_height() + 1),
-                ha='center', va='bottom', fontsize=10, color='black')
+    ax.annotate(f"{int(p.get_height())}",
+                (p.get_x() + p.get_width() / 2., p.get_height() / 2),
+                ha='center', va='center', fontsize=10, color='white', fontweight='bold',
+                bbox=dict(facecolor='black', alpha=0.7, edgecolor='none'))
 
+plt.grid(axis='y', linestyle='--', alpha=0.5)
 plt.tight_layout()
 gene_counts_by_species_path = os.path.join(output_dir, 'Genes_count_by_species.png')
 plt.savefig(gene_counts_by_species_path)
@@ -92,18 +98,21 @@ plt.show()
 ##### Figure 3: Top10-Species-Genes-Count
 
 plt.figure(figsize=(10, 6), dpi=400)
-plt.title('Top 10 Species Genes Count', fontsize=16)
-
 top_species = gene_counts.sort_values(ascending=False).head(10)
-ax = top_species.plot(kind='bar', color='skyblue', edgecolor='black')
+ax = top_species.plot(kind='bar', color='#2ca02c', edgecolor='black')
 
-plt.ylabel('Number of Genes', fontsize=14)
+plt.title('Top 10 Species Genes Count', fontsize=16, fontweight='bold')
+plt.ylabel('Number of Genes', fontsize=14, fontweight='bold')
+plt.xticks(rotation=45, ha='right')
 
-# Add numbers inside bars
+# Add vertical numbers inside bars with styling
 for p in ax.patches:
-    ax.annotate(f"{int(p.get_height())}", (p.get_x() + p.get_width() / 2., p.get_height() / 2),
-                ha='center', va='center', fontsize=10, color='black')
+    ax.annotate(f"{int(p.get_height())}",
+                (p.get_x() + p.get_width() / 2., p.get_height() / 2),
+                ha='center', va='center', fontsize=10, color='white', fontweight='bold',
+                bbox=dict(facecolor='black', alpha=0.7, edgecolor='none'))
 
+plt.grid(axis='y', linestyle='--', alpha=0.5)
 plt.tight_layout()
 top_10_species_genes_path = os.path.join(output_dir, 'Top_10_Species_Genes_Count.png')
 plt.savefig(top_10_species_genes_path)
