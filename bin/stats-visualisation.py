@@ -47,7 +47,7 @@ Species_Genes = pd.DataFrame({'Species': df['Species_Query_Name'], 'Gene': df['T
 GroubByGene = Species_Genes.groupby('Gene').size().sort_values(ascending=False)
 gene_counts = Species_Genes.groupby('Species')['Gene'].count()
 
-##### Figure 1 : Top-50-Genes-Count
+###### Figure 1 : Top-50-Genes-Count
 
 plt.figure(figsize=(10, 6), dpi=400)
 ax = GroubByGene.head(50).plot(kind='bar', color='#1f77b4', edgecolor='black')
@@ -61,7 +61,8 @@ plt.xticks(rotation=45, ha='right')
 for p in ax.patches:
     ax.annotate(f"{int(p.get_height())}",
                 (p.get_x() + p.get_width() / 2., p.get_height() / 2),
-                ha='center', va='center', fontsize=10, color='white', fontweight='bold', 
+                ha='center', va='center', fontsize=10, color='white', fontweight='bold',
+                rotation=90,  # Rotated for vertical orientation
                 bbox=dict(facecolor='black', alpha=0.7, edgecolor='none'))
 
 plt.grid(axis='y', linestyle='--', alpha=0.5)
@@ -71,7 +72,7 @@ plt.savefig(top_50_genes_path)
 print(f"Figure saved: '{top_50_genes_path}'")
 plt.show()
 
-##### Figure 2 : Genes-Count-by-Species
+###### Figure 2 : Genes-Count-by-Species
 
 plt.figure(figsize=(10, 6), dpi=400)
 ax = gene_counts.plot(kind='bar', color='#ff7f0e', edgecolor='black')
@@ -86,6 +87,7 @@ for p in ax.patches:
     ax.annotate(f"{int(p.get_height())}",
                 (p.get_x() + p.get_width() / 2., p.get_height() / 2),
                 ha='center', va='center', fontsize=10, color='white', fontweight='bold',
+                rotation=90,  # Rotated for vertical orientation
                 bbox=dict(facecolor='black', alpha=0.7, edgecolor='none'))
 
 plt.grid(axis='y', linestyle='--', alpha=0.5)
@@ -110,6 +112,7 @@ for p in ax.patches:
     ax.annotate(f"{int(p.get_height())}",
                 (p.get_x() + p.get_width() / 2., p.get_height() / 2),
                 ha='center', va='center', fontsize=10, color='white', fontweight='bold',
+                rotation=90,  # Rotated for vertical orientation
                 bbox=dict(facecolor='black', alpha=0.7, edgecolor='none'))
 
 plt.grid(axis='y', linestyle='--', alpha=0.5)
