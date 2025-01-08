@@ -47,14 +47,14 @@ Species_Genes = pd.DataFrame({'Species': df['Species_Query_Name'], 'Gene': df['T
 GroubByGene = Species_Genes.groupby('Gene').size().sort_values(ascending=False)
 gene_counts = Species_Genes.groupby('Species')['Gene'].count()
 
-###### Figure 1 : Top-20-Genes-Count
+###### Figure 1 : Top-20-Protein-Domains-Count
 
 plt.figure(figsize=(10, 6), dpi=400)
 ax = GroubByGene.head(20).plot(kind='bar', color='#1f77b4', edgecolor='black')
 
-plt.title('Top 20 Genes Count', fontsize=16, fontweight='bold')
-plt.xlabel('Genes', fontsize=14, fontweight='bold')
-plt.ylabel('Genes Count', fontsize=14, fontweight='bold')
+plt.title('Top 20 Protein Domains Count', fontsize=16, fontweight='bold')
+plt.xlabel('Protein Domains', fontsize=14, fontweight='bold')
+plt.ylabel('Count', fontsize=14, fontweight='bold')
 plt.xticks(rotation=45, ha='right')
 plt.grid(axis='x', linestyle='--', alpha=0.7)
 
@@ -67,19 +67,19 @@ for p in ax.patches:
                 bbox=dict(facecolor='black', alpha=0.7, edgecolor='none'))
 
 plt.tight_layout()
-top_20_genes_path = os.path.join(output_dir, 'Top_20_genes_count.png')
-plt.savefig(top_20_genes_path)
-print(f"Figure saved: '{top_20_genes_path}'")
+top_20_Protein_Domains_path = os.path.join(output_dir, 'Top_20_Protein_Domains_count.png')
+plt.savefig(top_20_Protein_Domains_path)
+print(f"Figure saved: '{top_20_Protein_Domains_path}'")
 plt.show()
 
-###### Figure 2 : Genes-Count-by-Species
+###### Figure 2 : Protein-Domains-Count-by-Species
 
 plt.figure(figsize=(20, 14), dpi=300)
 ax = gene_counts.plot(kind='bar', color='#ff7f0e', edgecolor='black')
 
-plt.title('Genes Count by Species', fontsize=16, fontweight='bold')
+plt.title('Protein Domains Count by Species', fontsize=16, fontweight='bold')
 plt.xlabel('Species', fontsize=14, fontweight='bold')
-plt.ylabel('Number of Genes', fontsize=14, fontweight='bold')
+plt.ylabel('Number of Protein Domains', fontsize=14, fontweight='bold')
 plt.xticks(rotation=45, ha='right')
 plt.grid(axis='y', linestyle='--', alpha=0.7)
 
@@ -92,19 +92,19 @@ for p in ax.patches:
                 bbox=dict(facecolor='black', alpha=0.7, edgecolor='none'))
 
 plt.tight_layout()
-gene_counts_by_species_path = os.path.join(output_dir, 'Genes_count_by_species.png')
-plt.savefig(gene_counts_by_species_path)
-print(f"Figure saved: '{gene_counts_by_species_path}'")
+Protein_Domains_counts_by_species_path = os.path.join(output_dir, 'Protein_Domains_count_by_species.png')
+plt.savefig(Protein_Domains_counts_by_species_path)
+print(f"Figure saved: '{Protein_Domains_counts_by_species_path}'")
 plt.show()
 
-##### Figure 3: Top10-Species-Genes-Count
+##### Figure 3: Top10-Species-Protein-Domains-Count
 
 plt.figure(figsize=(10, 6), dpi=400)
 top_species = gene_counts.sort_values(ascending=False).head(10)
 ax = top_species.plot(kind='bar', color='#2ca02c', edgecolor='black')
 
-plt.title('Top 10 Species Genes Count', fontsize=16, fontweight='bold')
-plt.ylabel('Number of Genes', fontsize=14, fontweight='bold')
+plt.title('Top 10 Species Protein Domains Count', fontsize=16, fontweight='bold')
+plt.ylabel('Number of Protein Domains', fontsize=14, fontweight='bold')
 plt.xticks(rotation=45, ha='right')
 
 # Add vertical numbers inside bars with styling
@@ -117,39 +117,39 @@ for p in ax.patches:
 
 plt.grid(axis='y', linestyle='--', alpha=0.5)
 plt.tight_layout()
-top_10_species_genes_path = os.path.join(output_dir, 'Top_10_Species_Genes_Count.png')
-plt.savefig(top_10_species_genes_path)
-print(f"Figure saved: '{top_10_species_genes_path}'")
+top_10_species_Protein_Domains_path = os.path.join(output_dir, 'Top_10_Species_Protein_Domains_Count.png')
+plt.savefig(top_10_species_Protein_Domains_path)
+print(f"Figure saved: '{top_10_species_Protein_Domains_path}'")
 plt.show()
 
 ############## Summary ################
 
-print(f"Total number Genes: {len(Species_Genes)} gene")
-print(f"Total number of Unique Genes: {Species_Genes['Gene'].nunique()} gene")
+print(f"Total number Protein Domains: {len(Species_Genes)} Domain")
+print(f"Total number of Unique Protein Domains: {Species_Genes['Gene'].nunique()} Domain")
 
 Total_Number_of_species = Species_Genes[["Species"]].nunique().iloc[0]
 print(f"Total number of Species: {Total_Number_of_species}")
 
 species_gene_counts = Species_Genes.groupby('Species')['Gene'].nunique().sort_values(ascending=False)
 
-print(f"'{species_gene_counts.index[0]}' is the Species with the most number of genes: {species_gene_counts.iloc[0]} gene")
-print(f"'{species_gene_counts.index[-1]}' is the Species with the lowest number of genes: {species_gene_counts.iloc[-1]} gene")
+print(f"'{species_gene_counts.index[0]}' is the Species with the most number of Protein Domains: {species_gene_counts.iloc[0]} Domain")
+print(f"'{species_gene_counts.index[-1]}' is the Species with the lowest number of Protein Domains: {species_gene_counts.iloc[-1]} Domain")
 
 gene_species_counts = Species_Genes.groupby('Gene')['Species'].nunique()
-print(f"Number of Unique Genes Common across all Species: {gene_species_counts[gene_species_counts == Total_Number_of_species].size} gene")
+print(f"Number of Unique Protein Domains Common across all Species: {gene_species_counts[gene_species_counts == Total_Number_of_species].size} Domain")
 
-# Save csv file: Table Genes Found In All Species
+# Save csv file: Table Protein Domains Found In All Species
 Result_Merge_innerJoin = (pd.merge(Species_Genes, gene_species_counts[gene_species_counts == Total_Number_of_species], on='Gene', how='inner')[['Gene', 'Species_x']])
 Result_Merge_innerJoin = Result_Merge_innerJoin.rename(columns={'Species_x': 'Species'})
 result_Table = pd.crosstab(Result_Merge_innerJoin['Gene'], Result_Merge_innerJoin['Species'])
-all_species_table_path = os.path.join(output_dir, 'Table_Genes_Count_Found_In_All_Species.csv')
-print("... Saving csv Table Genes Found Across All Species")
+all_species_table_path = os.path.join(output_dir, 'Table_Protein_Domains_Count_Found_In_All_Species.csv')
+print("... Saving csv Table Protein Domains Found Across All Species")
 result_Table.to_csv(all_species_table_path, index_label='Gene')
 
-# Save csv file: Table Genes Found In One Species Only
+# Save csv file: Table Protein Domains Found In One Species Only
 Result_Merge_innerJoin = (pd.merge(Species_Genes, gene_species_counts[gene_species_counts == 1], on='Gene', how='inner')[['Gene', 'Species_x']])
 Result_Merge_innerJoin = Result_Merge_innerJoin.rename(columns={'Species_x': 'Species'})
 result_Table = pd.crosstab(Result_Merge_innerJoin['Gene'], Result_Merge_innerJoin['Species'])
-one_species_table_path = os.path.join(output_dir, 'Table_Genes_Count_Found_In_One_Species_Only.csv')
-print("... Saving csv Table Genes Found In One Species Only")
+one_species_table_path = os.path.join(output_dir, 'Table_Protein_Domains_Count_Found_In_One_Species_Only.csv')
+print("... Saving csv Table Protein Domains Found In One Species Only")
 result_Table.to_csv(one_species_table_path, index_label='Gene')
