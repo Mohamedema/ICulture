@@ -18,11 +18,11 @@ This repository hosts the **iCulture pipeline**, a fully automated, parallelised
    - Parsed annotation results are used to generate:
      - Statistics on total and unique genes.
      - Gene distribution across species.
-     - Presence/absence matrices for species and genes.
+     - Presence/absence matrices for species and protein domains.
    - Visualizations include:
-     - Top genes counts.
-     - Gene counts by species.
-     - Distribution of common genes across species.
+     - Top domains count.
+     - domains count by species.
+     - Distribution of common domains across species.
 
 4. **Output**
    - Results include tables and visualizations saved in user-specified output directories.
