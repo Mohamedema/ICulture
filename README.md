@@ -6,6 +6,9 @@ This repository hosts the **iCulture pipeline**, a fully automated, parallelised
 
 ## Pipeline Overview
 
+**Workflow Diagram:**
+<p align="center"><a href="#"><img src="./workflow.png"></a></p>
+
 1. **Preprocessing and Clustering**  
    - The pipeline begins by clustering sequences using **MMseqs2 easy-linclust** for deduplication and grouping similar sequences.
    - This step generates representative sequences and cluster files based on user-defined thresholds for identity and coverage.
