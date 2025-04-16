@@ -116,7 +116,7 @@ docker pull mahmoudbassyouni/iculture-hmmscan-python:v1
 ```bash
 docker pull soedinglab/mmseqs2
 ```
-4. Generate Required Input Files
+### 4. Generate Required Input Files
 - Generate samplesheet.csv:
 ```bash
 ./bin/samplesheet-generator.sh
@@ -125,7 +125,7 @@ docker pull soedinglab/mmseqs2
 ```bash
 ./bin/thresholds-generator.sh
 ```
-5. Run the Pipeline
+### 5. Run the Pipeline
 Run the main pipeline script with the required inputs:
 ```bash
 ./bin/iculture-pipeline-parallel.sh -d dataset/brown-algae_dataset.fa \
@@ -135,7 +135,7 @@ Run the main pipeline script with the required inputs:
                                     -o results/ \
                                     -t 30 -m 24
 ```
-6. View Results
+### 6. View Results
 - Output files, tables, and visualizations are stored in the results/ directory.
 ---
 ## Pipeline Parameters
