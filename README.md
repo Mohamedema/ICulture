@@ -100,7 +100,7 @@ cd ICulture
 ```
 ### 2. Download the Dataset
 The dataset is hosted on Zenodo and can be downloaded using the link below:
-  [Download Brown Algae Dataset](https://zenodo.org/records/14578162/files/Brown-Algae.dataset.tar.gz?download=1)
+  [Download Brown Algae Dataset](https://zenodo.org/records/17100254/files/Brown-Algae.dataset.tar?download=1)
 
 Extract the dataset into your working directory:
 ```bash
